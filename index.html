@@ -60,7 +60,7 @@
       .animation3 {
         animation-name: flash;
         animation-timing-function: linear;
-        animation-duration: 2.5s;
+        animation-duration: 4s;
         animation-delay: 2s;
       }
       @keyframes flash {
@@ -92,7 +92,7 @@
   </head>
   <body>
     <div
-      class="container w-50 p-5 d-flex justify-content-center align-items-center result fs-1 fw-bold mt-4 bg-info rounded-5 show text-info"
+      class="container w-50 p-5 d-flex justify-content-center align-items-center result fs-1 fw-bold mt-4 rounded-5 show text-success"
     ></div>
     <div
       class="container p-3 d-flex justify-content-between align-items-center w-50 mt-5 gap-5 rounded-4 bg-secondary"
@@ -273,6 +273,7 @@
       dice2.src = "download.jpeg";
       dice1.classList.add("width");
       dice2.classList.add("width");
+      result.classList.remove("animation3");
 
       player1.disabled = true;
       player2.disabled = true;
