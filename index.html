@@ -83,7 +83,12 @@
           <span class="ms-5"> &nbsp; Roll Dice</span>
         </button>
       </div>
-      <img class="pataka w-50 position-absolute d-none" src="aidl.gif" alt="" />
+      <img
+        style="top: -150px"
+        class="pataka w-50 position-absolute d-none"
+        src="aidl.gif"
+        alt=""
+      />
       <div class="d-flex flex-column gap-3">
         <h1 class="text-white">Score: <span class="score2">0</span></h1>
 
@@ -117,6 +122,12 @@
     let score2 = document.querySelector(".score2");
     let pataka = document.querySelector(".pataka");
     let cong = new Audio("cong.mp3");
+    let one1 = new Audio("1.mp3");
+    let one2 = new Audio("2.mp3");
+    let one3 = new Audio("3.mp3");
+    let one4 = new Audio("4.mp3");
+    let one5 = new Audio("5.mp3");
+    let one6 = new Audio("6.mp3");
 
     let total1 = 0;
     let total2 = 0;
@@ -142,6 +153,19 @@
         player1.disabled = true;
         player2.disabled = false;
       }
+      if (celled === 1) {
+        one1.play();
+      } else if (celled === 2) {
+        one2.play();
+      } else if (celled === 3) {
+        one3.play();
+      } else if (celled === 4) {
+        one4.play();
+      } else if (celled === 5) {
+        one5.play();
+      } else {
+        one6.play();
+      }
     });
 
     player2.addEventListener("click", () => {
@@ -154,7 +178,19 @@
       dice2.classList.add("w-50");
       total2 += celled;
       score2.innerHTML = total2;
-
+      if (celled === 1) {
+        one1.play();
+      } else if (celled === 2) {
+        one2.play();
+      } else if (celled === 3) {
+        one3.play();
+      } else if (celled === 4) {
+        one4.play();
+      } else if (celled === 5) {
+        one5.play();
+      } else {
+        one6.play();
+      }
       if (celled === 6) {
         player2.disabled = false;
         player1.disabled = true;
@@ -166,12 +202,18 @@
         if (turn1Finished && turn2Finished) {
           if (total1 > total2) {
             result.innerHTML = "PLAYER 1 WINS";
-            pataka.classList.remove("d-none");
-            cong.play();
+
+            setTimeout(() => {
+              cong.play();
+              pataka.classList.remove("d-none");
+            }, 2000);
           } else if (total1 < total2) {
             result.innerHTML = "PLAYER 2 WINS";
-            pataka.classList.remove("d-none");
-            cong.play();
+
+            setTimeout(() => {
+              cong.play();
+              pataka.classList.remove("d-none");
+            }, 2000);
           } else {
             result.innerHTML = "MATCH DRAW";
           }
