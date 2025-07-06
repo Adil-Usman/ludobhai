@@ -35,11 +35,11 @@
         background-image: linear-gradient(to right, purple, blue);
       }
       .animation {
-        animation-name: flash;
+        animation-name: Usman;
         animation-timing-function: linear;
         animation-duration: 2.5s;
       }
-      @keyframes flash {
+      @keyframes Usman {
         0% {
           scale: 1.1;
         }
@@ -57,6 +57,34 @@
           scale: 1.1;
         }
       }
+      .animation3 {
+        animation-name: flash;
+        animation-timing-function: linear;
+        animation-duration: 2.5s;
+        animation-delay: 2s;
+      }
+      @keyframes flash {
+        0% {
+          scale: 1.1;
+          background-color: red;
+        }
+        25% {
+          scale: 1;
+          background-color: blue;
+        }
+        50% {
+          scale: 1.1;
+          background-color: red;
+        }
+        75% {
+          scale: 1;
+          background-color: blue;
+        }
+
+        100% {
+          scale: 1.1;
+        }
+      }
       .width {
         width: 65%;
       }
@@ -64,7 +92,7 @@
   </head>
   <body>
     <div
-      class="container w-50 p-5 d-flex justify-content-center align-items-center result fs-1 fw-bold mt-4 bg-info rounded-5 show"
+      class="container w-50 p-5 d-flex justify-content-center align-items-center result fs-1 fw-bold mt-4 bg-info rounded-5 show text-info"
     ></div>
     <div
       class="container p-3 d-flex justify-content-between align-items-center w-50 mt-5 gap-5 rounded-4 bg-secondary"
@@ -153,19 +181,21 @@
         player1.disabled = true;
         player2.disabled = false;
       }
-      if (celled === 1) {
-        one1.play();
-      } else if (celled === 2) {
-        one2.play();
-      } else if (celled === 3) {
-        one3.play();
-      } else if (celled === 4) {
-        one4.play();
-      } else if (celled === 5) {
-        one5.play();
-      } else {
-        one6.play();
-      }
+      setTimeout(() => {
+        if (celled === 1) {
+          one1.play();
+        } else if (celled === 2) {
+          one2.play();
+        } else if (celled === 3) {
+          one3.play();
+        } else if (celled === 4) {
+          one4.play();
+        } else if (celled === 5) {
+          one5.play();
+        } else {
+          one6.play();
+        }
+      }, 1000);
     });
 
     player2.addEventListener("click", () => {
@@ -178,19 +208,22 @@
       dice2.classList.add("w-50");
       total2 += celled;
       score2.innerHTML = total2;
-      if (celled === 1) {
-        one1.play();
-      } else if (celled === 2) {
-        one2.play();
-      } else if (celled === 3) {
-        one3.play();
-      } else if (celled === 4) {
-        one4.play();
-      } else if (celled === 5) {
-        one5.play();
-      } else {
-        one6.play();
-      }
+      setTimeout(() => {
+        if (celled === 1) {
+          one1.play();
+        } else if (celled === 2) {
+          one2.play();
+        } else if (celled === 3) {
+          one3.play();
+        } else if (celled === 4) {
+          one4.play();
+        } else if (celled === 5) {
+          one5.play();
+        } else {
+          one6.play();
+        }
+      }, 1000);
+
       if (celled === 6) {
         player2.disabled = false;
         player1.disabled = true;
@@ -202,23 +235,31 @@
         if (turn1Finished && turn2Finished) {
           if (total1 > total2) {
             result.innerHTML = "PLAYER 1 WINS";
+            result.classList.add("animation3");
+            result.classList.remove("bg-info");
 
             setTimeout(() => {
               cong.play();
+            }, 3000);
+            setTimeout(() => {
               pataka.classList.remove("d-none");
-            }, 2000);
+            }, 4500);
           } else if (total1 < total2) {
             result.innerHTML = "PLAYER 2 WINS";
+            result.classList.add("animation3");
+            result.classList.remove("bg-info");
 
             setTimeout(() => {
               cong.play();
+            }, 3000);
+            setTimeout(() => {
               pataka.classList.remove("d-none");
-            }, 2000);
+            }, 4500);
           } else {
             result.innerHTML = "MATCH DRAW";
           }
 
-          setTimeout(() => pataka.classList.add("d-none"), 3000);
+          setTimeout(() => pataka.classList.add("d-none"), 7000);
         }
       }
     });
